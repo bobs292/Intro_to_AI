@@ -12,7 +12,3 @@ class Graph:
             self.graph[u][v] = weight
         else:
             self.graph[u] = {v: weight}
-        if v in self.graph:
-            self.graph[v][u] = weight
-        else:
-            self.graph[v] = {u: weight}
