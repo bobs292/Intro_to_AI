@@ -40,6 +40,5 @@ class BFS:
         
     def result(self, goal, n_nodes, path):
         print(self.finput, self.name)
-        print("Destination: " + goal)
-        print("Number of nodes: " + str(n_nodes))
-        print("Path: " + str(path))
+        print(goal, n_nodes)
+        print(path)
