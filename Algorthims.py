@@ -16,8 +16,7 @@ class Greed:
             
             for node in connect_nodes:
                 print(node)
-                num_node = int(node)
-                cost = self.total_cost_to_goal(graph,num_node)
+                cost = self.total_cost_to_goal(graph,node)
                 
                 if cost < best_cost:
                     best_cost = cost
