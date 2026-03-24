@@ -1,6 +1,7 @@
 import sys
 from BFS import BFS
 from Graph import Graph
+from DFS import DFS
 
 def parse_input(finput):
     graph = Graph()
@@ -38,6 +39,9 @@ if __name__ == "__main__":
 
         if sys.argv[2] == "BFS":
             alg = BFS()
+        elif sys.argv[2] == "DFS":
+            alg = DFS()
+        #probs need to add a else for invalid cases :p
 
         alg.search(sys.argv[1], origin, destinations, graph)
 
