@@ -1,5 +1,7 @@
 from Graph import Graph
 
+#TODO comments, unsure if its required in the rubric, but ill probably add some in later <3
+
 class DFS:
     def __init__(self):
         self.name = "DFS"
