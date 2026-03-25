@@ -1,5 +1,6 @@
 import sys
 from BFS import BFS
+from Greed import Greed
 from Graph import Graph
 
 def parse_input(finput):
@@ -37,9 +38,11 @@ if __name__ == "__main__":
         origin, destinations, graph = parse_input(sys.argv[1])
 
         if sys.argv[2] == "BFS":
-            alg = BFS()
-
-        alg.search(sys.argv[1], origin, destinations, graph)
+            alg = BFS(origin, destinations, "BFS", finput, graph)
+        if sys.argv[2] == "Greed":
+            alg = Greed(origin, destinations, "Greed first search", finput, graph)
+            
+        alg.search()
 
     else:
         print("Invalid Arguments")
