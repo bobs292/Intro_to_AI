@@ -1,0 +1,14 @@
+[project]
+name = "algorithms"
+version = "0.0.0"
+authors = []
+description = ""
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]

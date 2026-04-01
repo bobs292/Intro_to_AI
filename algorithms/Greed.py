@@ -1,4 +1,4 @@
-from Algorthims import Algorithim
+from .Algorthims import Algorithim
 import math
 
 class Greed(Algorithim):
