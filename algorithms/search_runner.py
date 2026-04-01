@@ -33,15 +33,15 @@ def parse_input(finput):
 def run_algorithm(finput, method):
     origin, destinations, graph = parse_input(finput)
 
-    match method:
-        case "BFS":
+    match method.lower():
+        case "bfs":
             alg = BFS(origin, destinations, "BFS", finput, graph)
-        case "Greed":
+        case "greed":
             alg = Greed(origin, destinations, "Greed first search", finput, graph)
-        case "UCS":
+        case "ucs":
             alg = UCS(origin, destinations, "UCS", finput, graph)
         case _:
-            return "Unknown Algorithm"
+            return print("Unknown Algorithm")
  
     alg.search()
 
