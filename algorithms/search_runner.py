@@ -1,6 +1,7 @@
 import sys
 from .BFS import BFS
 from .UCS import UCS
+from .Greed import Greed
 from .Graph import Graph
 
 def parse_input(finput):
