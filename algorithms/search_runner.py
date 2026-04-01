@@ -1,5 +1,6 @@
 import sys
 from .BFS import BFS
+from .UCS import UCS
 from .Graph import Graph
 
 def parse_input(finput):
@@ -31,10 +32,15 @@ def parse_input(finput):
 def run_algorithm(finput, method):
     origin, destinations, graph = parse_input(finput)
 
-    if method == "BFS":
-        alg = BFS(origin, destinations, "BFS", finput, graph)
-    if method == "Greed":
-        alg = Greed(origin, destinations, "Greed first search", finput, graph)
-        
+    match method:
+        case "BFS":
+            alg = BFS(origin, destinations, "BFS", finput, graph)
+        case "Greed":
+            alg = Greed(origin, destinations, "Greed first search", finput, graph)
+        case "UCS":
+            alg = UCS(origin, destinations, "UCS", finput, graph)
+        case _:
+            return "Unknown Algorithm"
+ 
     alg.search()
 
