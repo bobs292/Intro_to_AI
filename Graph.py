@@ -4,18 +4,25 @@ class Graph:
         self.nodes = {}
 
     def add_node(self,u,v):
-        key_num = len(list(self.nodes.keys())) + 1
-        self.nodes[key_num] = [u,v]
+
+        key = len(self.nodes) + 1
+
+        self.nodes[key] = (float(u), float(v))
+
+        if key not in self.graph:
+            self.graph[key] = {}
 
     def add_edge(self,u,v, weight):
         if u in self.graph:
-            self.graph[u][v] = weight
+            self.graph[u][v] = float(weight)
         else:
-            self.graph[u] = {v: weight}
+            self.graph[u] = {v: float(weight)}
 
     def return_edges(self, key):
+        if self.graph[key] is None:
+            return None
         return self.graph[key]
-
+        
     def print_graph(self):
         print("Nodes:")
         x = 1
