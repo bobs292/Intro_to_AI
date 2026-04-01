@@ -1,12 +1,12 @@
 from .Graph import Graph
 
 class Algorithim:
-    def __init__(self, current_node, goal_node, name, file_name, graph):
+    def __init__(self, current_node, goal_nodes, name, file_name, graph):
         self.name = name
         self.found = False
         self.path = []
-        self.current_node = current_node
-        self.goal_node = goal_node
+        self.current_node = int(current_node)
+        self.goal_node = [int(i) for i in goal_nodes]
         self.graph = graph
         self.file_name = file_name
     

@@ -14,7 +14,6 @@ def parse_input(finput):
 
         origin = f[-4]
         destinations = f[-2].split('; ')
-
         for i in range(1, len(f) - 6):
             if f[i] == "Edges:":
                 edg = i+1
