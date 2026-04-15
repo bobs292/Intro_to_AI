@@ -13,21 +13,21 @@ class Greed(Algorithim):
         #needed for the reverse
         parent = {}
         parent[self.current_node] = None
-        print(self.graph.nodes)
-        print(self.graph.graph)
-        print(self.current_node) 
-        print(self.goal_node)
         while open_list:
             best_node = min(open_list, key=self.total_cost_to_goal)
             open_list.remove(best_node)
+
             if best_node in visited:
                 continue
+
             visited.add(best_node)
             self.current_node = best_node
+
             if best_node in self.goal_node:
                 self.goal_node = best_node
                 self.found = True
                 break
+
             for neighbor in self.graph.return_edges(best_node).keys():
                 neighbor = int(neighbor)
                 if neighbor in visited:
@@ -37,7 +37,6 @@ class Greed(Algorithim):
                     parent[neighbor] = best_node
 
         if self.found:
-
             self.path = self.reconstruct_path(parent)
         else:
             print("no path found")

@@ -12,8 +12,8 @@ def draw():
     ax.set_ylim(0, 10)
     ax.set_aspect('equal')
 
-def draw_node(x, y, label):
-    circle = Circle((x, y), radius=0.4, edgecolor='black', facecolor='lightblue', zorder=3)
+def draw_node(x, y, label,face_colour,edge_colour):
+    circle = Circle((x, y), radius=0.4, edgecolor=edge_colour, facecolor=face_colour, zorder=3)
     ax.add_patch(circle)
     ax.text(x, y, label, ha='center', va='center', fontsize=9, zorder=4)
 
@@ -39,7 +39,7 @@ def draw_graph(graph):
                 drawn.add((u, v))
 
     for node, (x, y) in graph.nodes.items():
-        draw_node(x, y, node)
+        draw_node(x, y, node, 'lightblue', 'black')
 
     final_setup()
 
@@ -48,26 +48,14 @@ def final_setup():
     plt.title('Weighted Graph')
     plt.show()
 
-if __name__ == "__main__":
-    g = Graph()
-    g.add_node(4,1)
-    g.add_node(2,2)
-    g.add_node(4,4)
-    g.add_node(6,3)
-    g.add_node(5,6)
-    g.add_node(7,5)
-    g.add_edge(2, 1, 4)
-    g.add_edge(3, 1, 5)
-    g.add_edge(1, 3, 5)
-    g.add_edge(2, 3, 4)
-    g.add_edge(3, 2, 5)
-    g.add_edge(4, 1, 6)
-    g.add_edge(1, 4, 6)
-    g.add_edge(4, 3, 5)
-    g.add_edge(3, 5, 6)
-    g.add_edge(5, 3, 6)
-    g.add_edge(4, 5, 7)
-    g.add_edge(5, 4, 8)
-    g.add_edge(6, 3, 7)
-    g.add_edge(3, 6, 7)
-    draw_graph(g)
+def draw_path(alg,graph):
+    path = alg.path
+    first = path[1]
+    last = path [-1]
+    for node in path[1:-1]:
+        x, y = graph.nodes.items()
+        draw_node(x, y, node, 'lightblue', 'green')
+    x,y = graph.first.items()
+    draw_node(x, y, first, 'green', 'green')
+    x,y = graph.last.items()
+    draw_node(x, y, last, 'red', 'black')

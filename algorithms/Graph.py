@@ -1,7 +1,9 @@
+from collections import defaultdict
+
 class Graph:
     def __init__(self):
-        self.graph = {}
-        self.nodes = {}
+        self.graph = defaultdict(list)
+        self.nodes = defaultdict(list)
 
     def add_node(self,u,v):
         key = len(self.nodes) + 1
@@ -19,6 +21,7 @@ class Graph:
 
     def return_edges(self, key):
         key = int(key)
+        print(type(self.graph[key]), self.graph[key])
         if self.graph[key] is None:
             return None
         return self.graph[key]

@@ -13,18 +13,32 @@ def parse_input(finput):
             print("Invalid file.")
 
         origin = f[-4]
-        destinations = f[-2].split('; ')
+        print(f[-2])
+        destinations = [int(x) for x in f[-2].strip().split('; ')]
+        print(destinations)
         for i in range(1, len(f) - 6):
             if f[i] == "Edges:":
                 edg = i+1
                 break
 
-            l = [char for char in f[i] if char.isdigit()]
-            graph.add_node(l[1], l[2])
+            parts = f[i].split(':')
+            node_id = int(parts[0].strip())
+
+            coords = parts[1].strip().strip('()').split(',')
+            x = coords[0]
+            y = coords[1]
+
+            graph.add_node(x, y)
 
         for i in range(edg, len(f) - 6):
-            l = [char for char in f[i] if char.isdigit()]
-            graph.add_edge(l[0], l[1], l[2])
+            parts = f[i].split(':')
+            weight = int(parts[1].strip())
+
+            nodes = parts[0].strip().strip('()').split(',')
+            n1 = nodes[0]
+            n2 = nodes[1]
+
+            graph.add_edge(n1, n2, weight)
 
     file.close()
     return origin, destinations, graph
@@ -43,4 +57,6 @@ def run_algorithm(finput, method):
             return print("Unknown Algorithm")
  
     alg.search()
+    #graph.draw()
+    #alg.draw_path(graph)
 
