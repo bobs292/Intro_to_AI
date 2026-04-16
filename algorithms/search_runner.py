@@ -3,6 +3,7 @@ from .BFS import BFS
 from .UCS import UCS
 from .Greed import Greed
 from .Graph import Graph
+from .GUI import draw_graph, draw_path
 
 def parse_input(finput):
     graph = Graph()
@@ -13,9 +14,8 @@ def parse_input(finput):
             print("Invalid file.")
 
         origin = f[-4]
-        print(f[-2])
         destinations = [int(x) for x in f[-2].strip().split('; ')]
-        print(destinations)
+        
         for i in range(1, len(f) - 6):
             if f[i] == "Edges:":
                 edg = i+1
@@ -57,6 +57,5 @@ def run_algorithm(finput, method):
             return print("Unknown Algorithm")
  
     alg.search()
-    #graph.draw()
-    #alg.draw_path(graph)
+    draw_graph(graph, alg.path)
 
