@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 from matplotlib.patches import Circle
 import math
-from Graph import Graph
+from .Graph import Graph
 
 fig, ax = None, None
 
@@ -24,9 +24,7 @@ def draw_edge(x1, y1, x2, y2, weight):
     ax.text(mid_x, mid_y, weight, ha='center', va='center',
             fontsize=8, color='red')
 
-
-
-def draw_graph(graph):
+def draw_graph(graph, path=None):
     draw()
 
     drawn = set()
@@ -41,6 +39,9 @@ def draw_graph(graph):
     for node, (x, y) in graph.nodes.items():
         draw_node(x, y, node, 'lightblue', 'black')
 
+    if path != None:
+        draw_path(path, graph)
+
     final_setup()
 
 def final_setup():
@@ -48,14 +49,15 @@ def final_setup():
     plt.title('Weighted Graph')
     plt.show()
 
-def draw_path(alg,graph):
-    path = alg.path
-    first = path[1]
+def draw_path(path ,graph):
+
+    first = path[0]
     last = path [-1]
     for node in path[1:-1]:
-        x, y = graph.nodes.items()
-        draw_node(x, y, node, 'lightblue', 'green')
-    x,y = graph.first.items()
+        x, y = graph.nodes[node]
+        draw_node(x, y, node, 'orange', 'green')
+
+    x,y = graph.nodes[first]
     draw_node(x, y, first, 'green', 'green')
-    x,y = graph.last.items()
+    x,y = graph.nodes[last]
     draw_node(x, y, last, 'red', 'black')
