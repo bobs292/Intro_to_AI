@@ -1,15 +1,15 @@
 import matplotlib.pyplot as plt
 from matplotlib.patches import Circle
 import math
-from Graph import Graph
+from .Graph import Graph
 
 fig, ax = None, None
 
-def draw():
+def draw(x, y):
     global fig, ax
     fig, ax = plt.subplots()
-    ax.set_xlim(0, 10)
-    ax.set_ylim(0, 10)
+    ax.set_xlim(0, x+1)
+    ax.set_ylim(0, y+1)
     ax.set_aspect('equal')
 
 def draw_node(x, y, label,face_colour,edge_colour):
@@ -27,7 +27,9 @@ def draw_edge(x1, y1, x2, y2, weight):
 
 
 def draw_graph(graph):
-    draw()
+    max_x = max(x for x, y in graph.nodes.values())
+    max_y = max(y for x, y in graph.nodes.values())
+    draw(max_x, max_y)
 
     drawn = set()
     for u, neighbors in graph.graph.items():
@@ -41,21 +43,26 @@ def draw_graph(graph):
     for node, (x, y) in graph.nodes.items():
         draw_node(x, y, node, 'lightblue', 'black')
 
-    final_setup()
 
 def final_setup():
     plt.grid(True)
     plt.title('Weighted Graph')
     plt.show()
 
-def draw_path(alg,graph):
+def draw_path(alg, graph):
     path = alg.path
-    first = path[1]
-    last = path [-1]
+    
+    first = path[0]
+    last = path[-1]
+
     for node in path[1:-1]:
-        x, y = graph.nodes.items()
-        draw_node(x, y, node, 'lightblue', 'green')
-    x,y = graph.first.items()
-    draw_node(x, y, first, 'green', 'green')
-    x,y = graph.last.items()
+        x, y = graph.nodes[node]
+        draw_node(x, y, node, 'lightgreen', 'green')
+
+    x, y = graph.nodes[first]
+    draw_node(x, y, first, 'green', 'black')
+
+    x, y = graph.nodes[last]
     draw_node(x, y, last, 'red', 'black')
+
+    final_setup()

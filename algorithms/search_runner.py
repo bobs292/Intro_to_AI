@@ -2,8 +2,10 @@ import sys
 from .BFS import BFS
 from .UCS import UCS
 from .Greed import Greed
+from .AS import AS
 from .Graph import Graph
-
+from .GUI import draw_graph
+from .GUI import draw_path
 def parse_input(finput):
     graph = Graph()
     with open(finput, 'r') as file:
@@ -53,10 +55,12 @@ def run_algorithm(finput, method):
             alg = Greed(origin, destinations, "Greed first search", finput, graph)
         case "ucs":
             alg = UCS(origin, destinations, "UCS", finput, graph)
+        case "as":
+            alg = AS(origin, destinations, "A*", finput, graph)
         case _:
             return print("Unknown Algorithm")
  
     alg.search()
-    #graph.draw()
-    #alg.draw_path(graph)
+    draw_graph(graph)
+    draw_path(alg,graph)
 
