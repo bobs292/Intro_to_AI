@@ -1,35 +1,27 @@
 # Intro_to_AI
 
-BFS:
+Run search:
 ```
-python search.py "PathFinder-test.txt" "BFS"
+python search.py <Graph> <Algorithm>
 ```
 or
 ```
-search "PathFinder-test.txt" "BFS"
+search <Graph> <Algorithm>
 ```
 
-DFS:
-```
-python search.py "PathFinder-test.txt" "DFS"
-```
-Beam:
-```
-python search.py "PathFinder-test.txt" "Beam"
-```
-Greed:
-```
-python search.py "PathFinder-test.txt" "Greed"
-```
-A Star:
-```
-python search.py "PathFinder-test.txt" "AS"
-```
-Uniform Cost Search:
-```
-python search.py "PathFinder-test.txt" "UCS"
-```
+Algorithms:
+- BFS
+- DFS
+- Greed
+- AS
+- Beam
+- UCS
 
+Graphs:
+- PathFinder-test.txt
+- PathFinder-test2.txt
+- PathFinder-test3.txt
+- PathFinder-test4.txt
 
 Run tests:
 ```
