@@ -1,5 +1,6 @@
-from Graph import Graph
-from Algorthims import Algorithim
+from .Graph import Graph
+from .Algorthims import Algorithim
+
 class BFS(Algorithim):
     def __init__(self,current_node, goal_node, name, file_name, graph):
         super().__init__(current_node, goal_node, name,file_name,graph)

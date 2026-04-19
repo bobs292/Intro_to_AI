@@ -8,3 +8,8 @@ or
 ```
 search "PathFinder-test.txt" "BFS"
 ```
+
+Run tests:
+```
+pytest ./tests
+```
