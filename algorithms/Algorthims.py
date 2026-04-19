@@ -18,5 +18,5 @@ class Algorithim:
     
     def result(self):
         print(self.file_name, self.name)
-        print(str(self.goal_node[-1]), str(self.nodes_created))
+        print(str(self.path[-1]), str(self.nodes_created))
         print(str(self.path))

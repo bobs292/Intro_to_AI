@@ -36,6 +36,7 @@ class Beam(Algorithim):
         if not self.found:
             print("No path found")
             self.path = []
+            return
 
         self.result()
 
