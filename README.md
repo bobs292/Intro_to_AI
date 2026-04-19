@@ -2,11 +2,11 @@
 
 Run search:
 ```
-python search.py <Graph> <Algorithm>
+python search.py <Graph> <Algorithm> [args]
 ```
 or
 ```
-search <Graph> <Algorithm>
+search <Graph> <Algorithm> [args]
 ```
 
 Algorithms:
@@ -22,6 +22,9 @@ Graphs:
 - PathFinder-test2.txt
 - PathFinder-test3.txt
 - PathFinder-test4.txt
+
+args:
+- --gui
 
 Run tests:
 ```

@@ -18,9 +18,7 @@ def parse_input(finput):
             raise ValueError("Invalid file: File must start with 'Nodes:'")
 
         origin = f[-4]
-        print(f[-2])
         destinations = [int(x) for x in f[-2].strip().split('; ')]
-        print(destinations)
         for i in range(1, len(f) - 6):
             if f[i] == "Edges:":
                 edg = i+1
@@ -47,7 +45,7 @@ def parse_input(finput):
     file.close()
     return origin, destinations, graph
 
-def run_algorithm(finput, method):
+def run_algorithm(finput, method, gui=False):
     origin, destinations, graph = parse_input(finput)
 
     match method.lower():
@@ -67,5 +65,6 @@ def run_algorithm(finput, method):
             return print("Unknown Algorithm")
  
     alg.search()
-    draw_graph(graph)
-    draw_path(alg, graph)
+    if gui:
+        draw_graph(graph)
+        draw_path(alg, graph)

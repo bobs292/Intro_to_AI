@@ -19,9 +19,9 @@ class UCS(Algorithim):
             node_id, current_cost = current_data
 
             if node_id in self.goal_node:
-                self._reconstruct_path(node_id)
-
-            if self.found:
+                self.reconstruct_path(node_id)
+                self.result()
+                self.found = True
                 break
 
             self.queue_edges(node_id, current_cost)
@@ -37,7 +37,7 @@ class UCS(Algorithim):
                 self.parent_map[child] = node_id
                 self.queue.append((child, new_total_cost))
 
-    def _reconstruct_path(self, goal_node):
+    def reconstruct_path(self, goal_node):
             finalized_path = []
             curr = goal_node
             while curr is not None:

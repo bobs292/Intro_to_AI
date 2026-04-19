@@ -21,7 +21,6 @@ class Graph:
 
     def return_edges(self, key):
         key = int(key)
-        print(type(self.graph[key]), self.graph[key])
         if self.graph[key] is None:
             return None
         return self.graph[key]
