@@ -52,6 +52,11 @@ def final_setup():
 def draw_path(alg, graph):
     path = alg.path
     
+    # just added this if the path is unreachable
+    if not path:
+        final_setup()
+        return
+
     first = path[0]
     last = path[-1]
 
