@@ -31,3 +31,6 @@ class DFS(Algorithim):
         for neighbour in connected:
             if neighbour not in self.visited:
                 self.DFSUtil(neighbour)
+                if self.found:
+                    return
+        self.path.pop
