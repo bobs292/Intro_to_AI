@@ -5,32 +5,44 @@ class UCS(Algorithim):
         super().__init__(current_node, goal_node, name, file_name, graph)
         
         self.queue = []
-        self.path = []
-
-        self.costs = {}
+        self.parent_map = {self.current_node: None}
+        self.costs = {self.current_node: 0}
 
     def search(self):
         self.queue.append((self.current_node, 0))
 
-        while(self.found == False and len(self.queue) > 0):
+        while not self.found and len(self.queue) > 0:
 
-            self.current_node = min(self.queue, key=lambda x: x[1])
-            self.queue.remove(self.current_node)
+            current_data = min(self.queue, key=lambda x: x[1])
+            self.queue.remove(current_data)
 
-            self.path.append(self.current_node[0])
-            self.verify_node(self.current_node[0])
-            self.queue_edges()
+            node_id, current_cost = current_data
 
-    def queue_edges(self):
-        connected = self.graph.return_edges(self.current_node[0])
+            if node_id in self.goal_node:
+                self._reconstruct_path(node_id)
 
-        for child, cost in connected.items():
-            if child in self.path:
-                continue
+            if self.found:
+                break
 
-            t_cost = self.current_node[1] + int(cost)
+            self.queue_edges(node_id, current_cost)
 
-            if child not in self.costs or t_cost < self.costs[child]:
-                self.costs[child] = t_cost
+    def queue_edges(self, node_id, current_cost):
+        connected = self.graph.return_edges(node_id)
 
-                self.queue.append((child, t_cost))
+        for child, edge_cost in connected.items():
+            new_total_cost = current_cost + int(edge_cost)
+
+            if child not in self.costs or new_total_cost < self.costs[child]:
+                self.costs[child] = new_total_cost
+                self.parent_map[child] = node_id
+                self.queue.append((child, new_total_cost))
+
+    def _reconstruct_path(self, goal_node):
+            finalized_path = []
+            curr = goal_node
+            while curr is not None:
+                finalized_path.append(curr)
+                curr = self.parent_map.get(curr)
+            
+            finalized_path.reverse()
+            self.path = finalized_path

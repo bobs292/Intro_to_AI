@@ -5,25 +5,40 @@ class BFS(Algorithim):
     def __init__(self,current_node, goal_node, name, file_name, graph):
         super().__init__(current_node, goal_node, name,file_name,graph)
         self.queue = []
+        self.parent_map = {self.current_node: None}
 
     def search(self):
         self.queue.append(self.current_node)
 
-        while(self.found ==False and len(self.queue) > 0):
-            self.path.append(self.queue[0])
-            self.verify_node(self.queue[0])
+        while not self.found and len(self.queue) > 0:
+            current = self.queue.pop(0)
+            
+            if current in self.goal_node:
+                self.reconstruct_path(current)
+                self.result()
+                self.found = True
 
-            self.queue_edges()
-            self.queue.pop(0)
+            self.queue_edges(current)
 
-    def queue_edges(self):
-        connected = list(self.graph.return_edges(self.queue[0]).keys())
+    def queue_edges(self, current):
+        connected = list(self.graph.return_edges(current).keys())
         connected.sort()
 
-        for i in connected:
-            if i in self.path or i in self.queue:
-                connected.remove(i)
+        for neighbor in connected:
+            if neighbor not in self.parent_map:
+                self.parent_map[neighbor] = current
+                self.queue.append(neighbor)
 
-        self.queue += connected
+    def reconstruct_path(self, goal_node):
+        finalized_path = []
+        curr = goal_node
+        
+        while curr is not None:
+            finalized_path.append(curr)
+            curr = self.parent_map[curr]
+
+        finalized_path.reverse()
+
+        self.path = finalized_path
         
     
