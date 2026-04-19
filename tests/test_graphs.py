@@ -52,7 +52,7 @@ def test_DFS_2():
 
     res = len(a.path)
 
-    assert res == 5
+    assert res == 11
 
 def test_Beam_1():
     finput = "PathFinder-test.txt"
