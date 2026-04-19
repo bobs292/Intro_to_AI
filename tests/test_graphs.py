@@ -120,6 +120,31 @@ def test_AS_3():
 
     assert res == 3
 
+def test_DFS_MultiplePaths():
+    finput = "PathFinder-test3.txt"
+    origin, destinations, graph = parse_input(finput)
+
+    a = DFS(origin, destinations, "DFS", finput, graph)
+    a.search()
+
+    assert a.found == True
+    assert a.path[0] == 1
+    assert a.path[-1] == 4
+    assert len(a.path) == 4
+
+def test_Beam_MultiplePaths():
+    finput = "PathFinder-test3.txt"
+    origin, destinations, graph = parse_input(finput)
+
+    a = Beam(origin, destinations, "Beam Search", finput, graph)
+    a.search()
+
+    assert a.found == True
+    assert a.path[0] == 1
+    assert a.path[-1] == 4
+    assert len(a.path) == 3
+
+
 def test_DFS_NoPath():
     finput = "PathFinder-test4.txt"
     origin, destinations, graph = parse_input(finput)
