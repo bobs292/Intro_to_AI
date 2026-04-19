@@ -15,7 +15,7 @@ def parse_input(finput):
         f = file.read().split('\n')
 
         if f[0] != "Nodes:":
-            print("Invalid file.")
+            raise ValueError("Invalid file: File must start with 'Nodes:'")
 
         origin = f[-4]
         print(f[-2])
@@ -27,7 +27,6 @@ def parse_input(finput):
                 break
 
             parts = f[i].split(':')
-            node_id = int(parts[0].strip())
 
             coords = parts[1].strip().strip('()').split(',')
             x = coords[0]
