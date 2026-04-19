@@ -24,7 +24,6 @@ class AS(Algorithim):
             self.current_node = node
 
             if node in self.goal_node:
-                self.goal_node = node 
                 self.found = True
                 break
 
@@ -43,6 +42,7 @@ class AS(Algorithim):
                     priority = new_cost + self.heuristic(self.graph, neighbor, self.goal_node)
 
                     queue.put((priority, neighbor))
+                    self.nodes_created += 1
 
         if self.found:
             self.path = self.reconstruct_path(parent)

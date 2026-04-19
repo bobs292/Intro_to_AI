@@ -50,17 +50,17 @@ def run_algorithm(finput, method, gui=False):
 
     match method.lower():
         case "bfs":
-            alg = BFS(origin, destinations, "BFS", finput, graph)
+            alg = BFS(origin, destinations, "DFS", finput, graph)
         case "dfs":
-            alg = DFS(origin, destinations, "DFS", finput, graph)
-        case "greed":
-            alg = Greed(origin, destinations, "Greed first search", finput, graph)
-        case "ucs":
-            alg = UCS(origin, destinations, "UCS", finput, graph)
+            alg = DFS(origin, destinations, "BFS", finput, graph)
+        case "greed" | "gbfs":
+            alg = Greed(origin, destinations, "GBFS", finput, graph)
         case "as":
-            alg = AS(origin, destinations, "A*", finput, graph)
-        case "beam":
-            alg = Beam(origin, destinations, "Beam Search", finput, graph)
+            alg = AS(origin, destinations, "AS", finput, graph)
+        case "ucs" | "cus1":
+            alg = UCS(origin, destinations, "CUS1", finput, graph)
+        case "beam" | "cus2":
+            alg = Beam(origin, destinations, "CUS2", finput, graph)
         case _:
             return print("Unknown Algorithm")
  

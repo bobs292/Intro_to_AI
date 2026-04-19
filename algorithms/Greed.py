@@ -24,7 +24,6 @@ class Greed(Algorithim):
             self.current_node = best_node
 
             if best_node in self.goal_node:
-                self.goal_node = best_node
                 self.found = True
                 break
 
@@ -34,6 +33,7 @@ class Greed(Algorithim):
                     continue
                 if neighbor not in open_list:
                     open_list.append(neighbor)
+                    self.nodes_created += 1
                     parent[neighbor] = best_node
 
         if self.found:

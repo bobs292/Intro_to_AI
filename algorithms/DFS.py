@@ -18,6 +18,7 @@ class DFS(Algorithim):
             return
 
         self.visited.add(node)
+        self.nodes_created += 1
         self.path.append(node)
 
         self.verify_node(node)

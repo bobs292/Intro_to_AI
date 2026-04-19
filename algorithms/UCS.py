@@ -36,6 +36,7 @@ class UCS(Algorithim):
                 self.costs[child] = new_total_cost
                 self.parent_map[child] = node_id
                 self.queue.append((child, new_total_cost))
+                self.nodes_created += 1
 
     def reconstruct_path(self, goal_node):
             finalized_path = []

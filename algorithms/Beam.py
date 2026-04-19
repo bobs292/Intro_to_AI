@@ -25,6 +25,7 @@ class Beam(Algorithim):
                 for neighbour in neighbours:
                     if neighbour not in path:
                         next_candidates.append(path + [neighbour])
+                        self.nodes_created += 1
 
             if not next_candidates:
                 break

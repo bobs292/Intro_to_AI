@@ -28,6 +28,7 @@ class BFS(Algorithim):
             if neighbor not in self.parent_map:
                 self.parent_map[neighbor] = current
                 self.queue.append(neighbor)
+                self.nodes_created += 1
 
     def reconstruct_path(self, goal_node):
         finalized_path = []
