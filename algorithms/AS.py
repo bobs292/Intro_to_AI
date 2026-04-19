@@ -2,7 +2,7 @@ from queue import PriorityQueue
 from .Algorthims import Algorithim
 
 class AS(Algorithim):
-
+    """A-Star Search (A*)"""
     def __init__(self, current_node, goal_node, name, file_name, graph):
         super().__init__(current_node, goal_node, name, file_name, graph) 
 

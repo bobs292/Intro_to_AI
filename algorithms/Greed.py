@@ -2,6 +2,9 @@ from .Algorthims import Algorithim
 import math
 
 class Greed(Algorithim):
+    """
+    Greedy Best-First Search (GBFS) algorithm.
+    """
 
     def __init__(self, current_node, goal_node, name, file_name, graph):
         super().__init__(current_node, goal_node, name, file_name, graph)

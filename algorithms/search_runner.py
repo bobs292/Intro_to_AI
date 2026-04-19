@@ -10,6 +10,10 @@ from .GUI import draw_graph
 from .GUI import draw_path
 
 def parse_input(finput):
+    """
+    Reads a text file containing nodes, edges and start/end positions.
+    Then, converts the data into a Graph object.
+    """
     graph = Graph()
     with open(finput, 'r') as file:
         f = file.read().split('\n')
@@ -46,6 +50,13 @@ def parse_input(finput):
     return origin, destinations, graph
 
 def run_algorithm(finput, method, gui=False):
+    """
+    Runs a search algorithm based on a graph from a file.
+    Args:
+        finput (str): Path the the graph file.
+        method (str): String indicating the specified search algorithm.
+        gui (bool): Bool indicating whether or not to show the gui.
+    """
     origin, destinations, graph = parse_input(finput)
 
     match method.lower():

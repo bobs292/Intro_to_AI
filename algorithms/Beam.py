@@ -1,6 +1,9 @@
 from .Algorthims import Algorithim
 
 class Beam(Algorithim):
+    """
+    Beam search algorithm.
+    """
     def __init__(self, current_node, goal_node, name, file_name, graph, beam_width=3):
         super().__init__(current_node, goal_node, name, file_name, graph)
         self.beam_width = beam_width

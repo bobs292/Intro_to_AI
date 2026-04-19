@@ -1,6 +1,9 @@
 from .Algorthims import Algorithim
 
 class UCS(Algorithim):
+    """
+    Uniform Cost Search (UCS) algorithm.
+    """
     def __init__(self, current_node, goal_node, name, file_name, graph):
         super().__init__(current_node, goal_node, name, file_name, graph)
         
