@@ -50,9 +50,9 @@ def run_algorithm(finput, method, gui=False):
 
     match method.lower():
         case "bfs":
-            alg = BFS(origin, destinations, "DFS", finput, graph)
+            alg = BFS(origin, destinations, "BFS", finput, graph)
         case "dfs":
-            alg = DFS(origin, destinations, "BFS", finput, graph)
+            alg = DFS(origin, destinations, "DFS", finput, graph)
         case "greed" | "gbfs":
             alg = Greed(origin, destinations, "GBFS", finput, graph)
         case "as":
