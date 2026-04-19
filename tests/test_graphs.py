@@ -119,3 +119,23 @@ def test_AS_3():
     res = len(a.path)
 
     assert res == 3
+
+def test_DFS_NoPath():
+    finput = "PathFinder-test4.txt"
+    origin, destinations, graph = parse_input(finput)
+
+    a = DFS(origin, destinations, "DFS", finput, graph)
+    a.search()
+
+    assert a.found == False
+    assert a.path == []
+
+def test_Beam_NoPath():
+    finput = "PathFinder-test4.txt"
+    origin, destinations, graph = parse_input(finput)
+
+    a = Beam(origin, destinations, "Beam Search", finput, graph)
+    a.search()
+
+    assert a.found == False
+    assert a.path == []

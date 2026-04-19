@@ -9,6 +9,10 @@ class DFS(Algorithim):
     def search(self):
         self.DFSUtil(self.current_node)
 
+        if not self.found:
+            print("No path found")
+            self.path = []
+
     def DFSUtil(self, node):
         if self.found:
             return

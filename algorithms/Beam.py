@@ -32,6 +32,10 @@ class Beam(Algorithim):
             next_candidates.sort(key=lambda p: self.heuristic(p[-1]))
             beam = next_candidates[:self.beam_width]
 
+        if not self.found:
+            print("No path found")
+            self.path = []
+
         self.result()
 
     
