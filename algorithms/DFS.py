@@ -1,7 +1,7 @@
 from .Graph import Graph
-from .Algorithm import Algorithm
+from .Algorthims import Algorithim
 
-class DFS(Algorithm):
+class DFS(Algorithim):
     def __init__(self, current_node, goal_nodes, name, file_name, graph):
         super().__init__(current_node, goal_nodes, name, file_name, graph)
         self.visited = set()
