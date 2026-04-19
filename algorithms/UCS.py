@@ -7,16 +7,18 @@ class UCS(Algorithim):
         self.queue = []
         self.parent_map = {self.current_node: None}
         self.costs = {self.current_node: 0}
+        self.counter = 0
 
     def search(self):
-        self.queue.append((self.current_node, 0))
+        self.queue.append((0, self.current_node, self.counter))
+        self.counter += 1
 
-        while not self.found and len(self.queue) > 0:
+        while not self.found and self.queue:
 
-            current_data = min(self.queue, key=lambda x: x[1])
+            current_data = min(self.queue, key=lambda x: (x[0], x[1], x[2]))
             self.queue.remove(current_data)
 
-            node_id, current_cost = current_data
+            current_cost, node_id, _ = current_data
 
             if node_id in self.goal_node:
                 self.reconstruct_path(node_id)
@@ -30,12 +32,14 @@ class UCS(Algorithim):
         connected = self.graph.return_edges(node_id)
 
         for child, edge_cost in connected.items():
+            child = int(child)
             new_total_cost = current_cost + int(edge_cost)
 
             if child not in self.costs or new_total_cost < self.costs[child]:
                 self.costs[child] = new_total_cost
                 self.parent_map[child] = node_id
-                self.queue.append((child, new_total_cost))
+                self.queue.append((new_total_cost, child, self.counter))
+                self.counter += 1
                 self.nodes_created += 1
 
     def reconstruct_path(self, goal_node):

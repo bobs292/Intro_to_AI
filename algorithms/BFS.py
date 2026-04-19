@@ -17,6 +17,7 @@ class BFS(Algorithim):
                 self.reconstruct_path(current)
                 self.result()
                 self.found = True
+                break
 
             self.queue_edges(current)
 
