@@ -1,6 +1,6 @@
 from .Graph import Graph
 
-class Algorithim:
+class Algorithm:
     """
     Base class for all search algorithms.
 
